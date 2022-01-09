@@ -30,7 +30,21 @@ namespace ChosenDropDown.Controllers
 
         public ActionResult ChosenDropDown()
         {
-            return View();
+            DBModels db = new DBModels();
+            Customers objCustumer = new Customers();
+            objCustumer.GetCustomerList = db.Tbl_Customer.Select(x => new Customers
+            {
+                CustomerId = x.Id,
+                CustomerName = x.Name
+            }).ToList();
+            return View(objCustumer);
+        }
+
+        [HttpPost]
+        public ActionResult ChosenDropDown(Customers objCustomer)
+        {
+            //Save Selected Item into table
+            return RedirectToAction("ChosenDropDown");
         }
 
     }

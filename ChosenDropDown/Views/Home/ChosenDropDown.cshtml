@@ -1,8 +1,19 @@
-﻿
+﻿@model  ChosenDropDown.Models.Customers
+
 @{
     ViewBag.Title = "ChosenDropDown";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>ChosenDropDown</h2>
+@using (Html.BeginForm())
+{
+    @Html.DropDownListFor(x => x.CustomerId,
+    Model.GetCustomerList.Select(x => new SelectListItem
+    {
+        Text = x.CustomerName
+        //Parei eem 13:32 no vídeo https://www.youtube.com/watch?v=IoJOgExcSyU
+
+    }))
+}
 
