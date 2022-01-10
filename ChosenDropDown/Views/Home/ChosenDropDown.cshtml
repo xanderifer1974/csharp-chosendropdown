@@ -5,15 +5,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>ChosenDropDown</h2>
+<h2>
+    ChosenDropDown
+</h2>
 @using (Html.BeginForm())
 {
-    @Html.DropDownListFor(x => x.CustomerId,
+    @Html.DropDownListFor(x => x.customerList,
     Model.GetCustomerList.Select(x => new SelectListItem
     {
-        Text = x.CustomerName
-        //Parei eem 13:32 no vídeo https://www.youtube.com/watch?v=IoJOgExcSyU
+        Text = x.CustomerName,
+        Value = x.CustomerId.ToString()
 
-    }))
+    }), new{@class= "form-control chosen-select", @multiple= true})
+
+    <input type="submit" name="name" , value="Submit" />
 }
+
+<script>
+    $('.chosen-select').chosen();
+</script>
+
 

@@ -10,5 +10,6 @@ namespace ChosenDropDown.Models
         public int CustomerId { get; set; }
         public string CustomerName { get; set; }
         public List<Customers> GetCustomerList { get; set; }
+        public string[] customerList { get; set; }
     }
 }
